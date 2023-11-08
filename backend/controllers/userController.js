@@ -43,17 +43,27 @@ const loginUser = asyncHandler(async (req, res) => {
       password,
       existingUser.password
     );
-  }
-  if (isPasswordValid) {
-    createToken(res, existingUser._id);
-    res.status(200).json({
-      _id: existingUser._id,
-      username: existingUser.username,
-      email: existingUser.email,
-      isAdmin: existingUser.isAdmin,
-    });
-    return;
+    if (isPasswordValid) {
+      createToken(res, existingUser._id);
+      res.status(201).json({
+        _id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+        isAdmin: existingUser.isAdmin,
+      });
+      return;
+    }
   }
 });
 
-export { createUser, loginUser };
+const logoutCurrentUser = asyncHandler(async (req, res) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({
+    message: "Successfully logged out",
+  });
+});
+
+export { createUser, loginUser, logoutCurrentUser };
