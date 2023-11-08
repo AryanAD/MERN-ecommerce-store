@@ -2,11 +2,11 @@ import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 import asyncHandler from "./asyncHandler.js";
 
-const authenticate = asuyncHandler(async (req, res, next) => {
+const authenticate = asyncHandler(async (req, res, next) => {
   let token;
 
   // Read the JWT from the 'jwt' cookie
-  token = req.cookie.jwt;
+  token = req.cookies.jwt;
 
   if (token) {
     try {
