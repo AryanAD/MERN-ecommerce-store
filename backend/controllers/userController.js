@@ -7,7 +7,7 @@ const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    throw new Error("Please fill all the input fields");
+    throw new Error("Please fill all the inputs.");
   }
 
   const userExists = await User.findOne({ email });
@@ -36,6 +36,9 @@ const createUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  console.log(email);
+  console.log(password);
+
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
@@ -43,8 +46,10 @@ const loginUser = asyncHandler(async (req, res) => {
       password,
       existingUser.password
     );
+
     if (isPasswordValid) {
       createToken(res, existingUser._id);
+
       res.status(201).json({
         _id: existingUser._id,
         username: existingUser.username,
@@ -61,9 +66,8 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     expires: new Date(0),
   });
-  res.status(200).json({
-    message: "Successfully logged out",
-  });
+
+  res.status(200).json({ message: "Logged out successfully" });
 });
 
 const getAllUsers = asyncHandler(async (req, res) => {
@@ -79,11 +83,10 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
-      isAdmin: user.isAdmin,
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("User not found.");
   }
 });
 
@@ -120,14 +123,14 @@ const deleteUserById = asyncHandler(async (req, res) => {
   if (user) {
     if (user.isAdmin) {
       res.status(400);
-      throw new Error("You cannot delete an admin");
+      throw new Error("Cannot delete admin user");
     }
 
-    await user.deleteOne({ _id: user._id });
-    res.json({ message: "User removed successfully" });
+    await User.deleteOne({ _id: user._id });
+    res.json({ message: "User removed" });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("User not found.");
   }
 });
 
