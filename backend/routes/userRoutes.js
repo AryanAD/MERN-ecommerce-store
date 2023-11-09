@@ -17,6 +17,7 @@ router
   .route("/")
   .post(createUser)
   .get(authenticate, authorizeAdmin, getAllUsers);
+
 router.post("/auth", loginUser);
 router.post("/logout", logoutCurrentUser);
 
@@ -25,7 +26,7 @@ router
   .get(authenticate, getCurrentUserProfile)
   .put(authenticate, updateCurrentUserProfile);
 
-// ADMIN ROUTES
+// ADMIN ROUTES 👇
 router.route("/:id").delete(authenticate, authorizeAdmin, deleteUserById);
 
 export default router;
