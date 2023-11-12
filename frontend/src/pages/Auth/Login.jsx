@@ -33,8 +33,9 @@ const Login = () => {
       const res = await login({ email, password }).unwrap();
       console.log(res);
       dispatch(setCredentials({ ...res }));
-    } catch (error) {
-      toast.error(error?.data?.message || error.message);
+      navigate(redirect);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -46,44 +47,53 @@ const Login = () => {
 
           <form onSubmit={submitHandler} className="container w-[40rem]">
             <div className="my-[2rem]">
-              <label htmlFor="email" className="block text-sm font-medium">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-white"
+              >
                 Email Address
               </label>
-
               <input
                 type="email"
                 id="email"
                 className="mt-1 p-2 border rounded w-full"
+                placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="my-[2rem]">
-              <label htmlFor="password" className="block text-sm font-medium">
+
+            <div className="mb-4">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-white"
+              >
                 Password
               </label>
-
               <input
                 type="password"
                 id="password"
                 className="mt-1 p-2 border rounded w-full"
+                placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-[#eca500]  px-4 py-2 rounded cursor-pointer my-[1rem]"
+              className="bg-[#b24747] font-medium text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
             >
               {isLoading ? "Signing In..." : "Sign In"}
             </button>
 
             {isLoading && <Loader />}
           </form>
+
           <div className="mt-4">
-            <p className="text-[#444] font-medium">
-              New Customer ?{" "}
+            <p className="font-medium text-[#444]">
+              New Customer?{" "}
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
                 className="text-[#903042] hover:underline"
@@ -93,6 +103,11 @@ const Login = () => {
             </p>
           </div>
         </div>
+        <img
+          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
+          alt=""
+          className="h-[65rem] w-[59%] xl:block md:hidden sm:hidden rounded-lg"
+        />
       </section>
     </div>
   );
