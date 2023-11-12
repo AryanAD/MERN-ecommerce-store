@@ -7,7 +7,7 @@ import { setCredentials } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const [username, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -66,7 +66,7 @@ const Register = () => {
               className="mt-1 p-2 border rounded w-full"
               placeholder="Enter name"
               value={username}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
 
