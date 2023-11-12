@@ -69,6 +69,17 @@ const Login = () => {
 
             {isLoading && <Loader />}
           </form>
+          <div className="mt-4">
+            <p className="text-[#444] font-medium">
+              New Customer ?{" "}
+              <Link
+                to={redirect ? `/register?redirect=${redirect}` : "/register"}
+                className="text-[#903042] hover:underline"
+              >
+                Register
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
     </div>
