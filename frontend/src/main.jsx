@@ -13,6 +13,8 @@ import PrivateRoutes from "./components/PrivateRoutes.jsx";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 
+import Profile from "./pages/User/Profile.jsx";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
