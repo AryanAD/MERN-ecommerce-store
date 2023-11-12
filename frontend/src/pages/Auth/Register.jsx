@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router";
-import { useRegisterMutation } from "../../redux/api/usersApiSlice";
 import Loader from "../../components/Loader";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useRegisterMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 const Register = () => {
-  const [userName, setUserName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -17,6 +16,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const [register, { isLoading }] = useRegisterMutation();
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const { search } = useLocation();
@@ -29,25 +29,21 @@ const Register = () => {
     }
   }, [navigate, redirect, userInfo]);
 
-  const handleSubmit = async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
-    }
-    try {
-      const res = await register({
-        userName,
-        email,
-        password,
-        confirmPassword,
-      }).unwrap();
-      console.log(res);
-      dispatch(setCredentials({ ...res }));
-      navigate(redirect);
-      toast.success("User registered successfully");
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.data?.message || err.error);
+    } else {
+      try {
+        const res = await register({ username, email, password }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        navigate(redirect);
+        toast.success("User successfully registered");
+      } catch (err) {
+        console.log(err);
+        toast.error(err.data.message);
+      }
     }
   };
 
@@ -56,79 +52,88 @@ const Register = () => {
       <div className="mr-[4rem] mt-[5rem]">
         <h1 className="text-2xl font-semibold mb-4">Register</h1>
 
-        <form onSubmit={handleSubmit} className="container w-[40rem]">
+        <form onSubmit={submitHandler} className="container w-[40rem]">
           <div className="my-[2rem]">
-            <label htmlFor="name" className="block text-sm font-medium">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-white"
+            >
               Name
             </label>
-
             <input
               type="text"
               id="name"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter Name"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              placeholder="Enter name"
+              value={username}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="my-[2rem]">
-            <label htmlFor="email" className="block text-sm font-medium">
-              Email
-            </label>
 
+          <div className="my-[2rem]">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-white"
+            >
+              Email Address
+            </label>
             <input
               type="email"
               id="email"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter Email"
+              placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+
           <div className="my-[2rem]">
-            <label htmlFor="password" className="block text-sm font-medium">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-white"
+            >
               Password
             </label>
-
             <input
               type="password"
               id="password"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter Password"
+              placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
           <div className="my-[2rem]">
             <label
-              htmlFor="confirmpassword"
-              className="block text-sm font-medium"
+              htmlFor="confirmPassword"
+              className="block text-sm font-medium text-white"
             >
               Confirm Password
             </label>
-
             <input
               type="password"
               id="confirmPassword"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Confirm Password"
+              placeholder="Confirm password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
+
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-[#b24747] font-medium px-4 py-2 rounded cursor-pointer my-[1rem]"
+            className="bg-[#b24747] font-medium text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
           >
-            {isLoading ? "Registering..." : "Registered"}
+            {isLoading ? "Registering..." : "Register"}
           </button>
 
           {isLoading && <Loader />}
         </form>
 
         <div className="mt-4">
-          <p>
+          <p className="font-medium text-[#444]">
             Already have an account?{" "}
             <Link
               to={redirect ? `/login?redirect=${redirect}` : "/login"}
@@ -139,6 +144,11 @@ const Register = () => {
           </p>
         </div>
       </div>
+      <img
+        src="https://images.unsplash.com/photo-1576502200916-3808e07386a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80"
+        alt=""
+        className="h-[65rem] w-[59%] xl:block md:hidden sm:hidden rounded-lg"
+      />
     </section>
   );
 };
