@@ -18,7 +18,7 @@ import Profile from "./pages/User/Profile.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="r" element={<PrivateRoutes />}>
+      <Route path="" element={<PrivateRoutes />}>
         <Route path="/profile" element={<Profile />} />
       </Route>
       <Route path="/login" element={<Login />} />
