@@ -29,7 +29,7 @@ const Register = () => {
     }
   }, [navigate, redirect, userInfo]);
 
-  const submitHandler = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -52,7 +52,7 @@ const Register = () => {
       <div className="mr-[4rem] mt-[5rem]">
         <h1 className="text-2xl font-semibold mb-4">Register</h1>
 
-        <form onSubmit={submitHandler} className="container w-[40rem]">
+        <form onSubmit={handleSubmit} className="container w-[40rem]">
           <div className="my-[2rem]">
             <label
               htmlFor="name"
