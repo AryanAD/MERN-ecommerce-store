@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store.js";
 
 // Auth
-import Login from "./pages/Auth/Login.jsx";
+import Login from "./pages/Auth/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
