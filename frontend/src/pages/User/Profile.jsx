@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useProfileMutation } from "../../redux/api/usersApiSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [username, setUsername] = useState("");
@@ -23,7 +24,7 @@ const Profile = () => {
   return (
     <div className="container mx-auto p-4 mt-[10rem]">
       <div className="flex justify-center align-center md:flex md:space-x-4">
-        <div className="md:w-1/3">
+        <div className="md:w-1/3 bg-[azure] shadow-[0_5px_30px_5px_rgba(0,0,0,0.08)] p-5 rounded-lg ">
           <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
 
           <form>
@@ -69,6 +70,21 @@ const Profile = () => {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
+            </div>
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className="bg-[#903020] text-white py-2 px-4 rounded hover:bg-[#D04010]"
+              >
+                Update
+              </button>
+
+              <Link
+                to="/user-orders"
+                className="bg-[#903020] text-white py-2 px-4 rounded hover:bg-[#D04010]"
+              >
+                My Orders
+              </Link>
             </div>
           </form>
         </div>
