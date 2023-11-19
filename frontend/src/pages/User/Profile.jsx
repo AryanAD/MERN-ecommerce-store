@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useProfileMutation } from "../../redux/api/usersApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader";
+import { toast } from "react-toastify";
+import { setCredentials } from "../../redux/features/auth/authSlice";
 
 const Profile = () => {
   const [username, setUsername] = useState("");
@@ -21,13 +24,35 @@ const Profile = () => {
 
   const dispatch = useDispatch();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+    } else {
+      try {
+        const res = await updateProfile({
+          _id: userInfo._id,
+          username,
+          email,
+          password,
+        }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        toast.success("Profile Updated Successfully!");
+        console.log(res);
+      } catch (err) {
+        toast.error(err?.data?.message || err.message);
+      }
+    }
+  };
+
   return (
     <div className="container mx-auto p-4 mt-[10rem]">
       <div className="flex justify-center align-center md:flex md:space-x-4">
         <div className="md:w-1/3 bg-[azure] shadow-[0_5px_30px_5px_rgba(0,0,0,0.08)] p-5 rounded-lg ">
           <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block mb-2">Name</label>
               <input
@@ -88,6 +113,8 @@ const Profile = () => {
             </div>
           </form>
         </div>
+
+        {loadingUpdateProfile && <Loader />}
       </div>
     </div>
   );
