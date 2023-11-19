@@ -32,7 +32,7 @@ const Profile = () => {
               type="text"
               placeholder="Enter Name"
               className="form-input p-4 rounded-sm w-full"
-              value={"hi"}
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
