@@ -1,6 +1,16 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
 import Product from "../models/productModel.js";
 
+const fetchProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find({});
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 const addProduct = asyncHandler(async (req, res) => {
   try {
     const { name, description, brand, price, quantity, category } = req.fields;
@@ -73,4 +83,4 @@ const deleteProduct = asyncHandler(async (req, res) => {
     res.status(400).json("Internal Server Error");
   }
 });
-export { addProduct, updateProductDetails, deleteProduct };
+export { fetchProducts, addProduct, updateProductDetails, deleteProduct };
