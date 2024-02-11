@@ -31,8 +31,8 @@ const router = createBrowserRouter(
 
       {/* Admin Routes */}
       <Route path="/admin" element={<AdminRoute />}>
-        <Route path="userlist" element={<UserLists />} />
-        <Route path="categorylist" element={<CategoryList />} />
+        <Route path="user-list" element={<UserLists />} />
+        <Route path="category-list" element={<CategoryList />} />
       </Route>
     </Route>
   )

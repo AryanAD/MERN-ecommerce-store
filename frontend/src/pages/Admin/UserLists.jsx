@@ -150,7 +150,7 @@ const UserLists = () => {
                       <div className="flex">
                         <button
                           onClick={() => handleDelete(user._id)}
-                          className="bg-red-600 hover: bg-red-700 text-white font-bold py-2 px-3 rounded-md"
+                          className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-3 rounded-md"
                         >
                           <FaTrash />
                         </button>
