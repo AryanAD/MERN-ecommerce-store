@@ -51,13 +51,17 @@ const fetchProductById = asyncHandler(async (req, res) => {
 
 const fetchAllProducts = asyncHandler(async (req, res) => {
   try {
+    // Fetch all products from the database, populate the "category" field, limit the result to 12, and sort by createdAt in descending order
     const products = await Product.find()
-      .populate("category")
-      .limit(12)
-      .sort({ createdAt: -1 });
+      .populate("category") // Populate the "category" field, assuming it's a reference to another collection
+      .limit(12) // Limit the result to 12 products
+      .sort({ createdAt: -1 }); // Sort the products by createdAt in descending order
+    // Respond with an array containing the details of all fetched products
     res.json(products);
   } catch (error) {
+    // Handle any errors that occur during the execution of the try block
     console.error(error);
+    // Respond with a 500 Internal Server Error status and an error message
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
