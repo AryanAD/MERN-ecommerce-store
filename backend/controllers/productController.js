@@ -27,6 +27,28 @@ const fetchProducts = asyncHandler(async (req, res) => {
   }
 });
 
+const fetchProductById = asyncHandler(async (req, res) => {
+  try {
+    // Find the product in the database based on the provided product ID (req.params.id)
+    const product = await Product.findById(req.params.id);
+    // Check if the product exists
+    if (product) {
+      // Respond with the details of the found product
+      res.json(product);
+    } else {
+      // If the product is not found, throw an error
+      throw new Error("Product not found");
+    }
+    // Note: The following line is unreachable, as the function already responded in the 'if' block
+    // res.json(product);
+  } catch (error) {
+    // Handle any errors that occur during the execution of the try block
+    console.error(error);
+    // Respond with a 404 Not Found status and an error message
+    res.status(404).json({ error: "Product Not Found" });
+  }
+});
+
 const addProduct = asyncHandler(async (req, res) => {
   try {
     // Destructure product details from the request's fields
@@ -108,4 +130,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-export { fetchProducts, addProduct, updateProductDetails, deleteProduct };
+export {
+  fetchProducts,
+  fetchProductById,
+  addProduct,
+  updateProductDetails,
+  deleteProduct,
+};

@@ -5,6 +5,7 @@ const router = express.Router();
 // controllers
 import {
   fetchProducts,
+  fetchProductById,
   addProduct,
   updateProductDetails,
   deleteProduct,
@@ -19,6 +20,7 @@ router
   .post(authenticate, authorizeAdmin, formiddable(), addProduct);
 router
   .route("/:id")
+  .get(fetchProductById)
   .put(authenticate, authorizeAdmin, formiddable(), updateProductDetails)
   .delete(authenticate, authorizeAdmin, deleteProduct);
 
