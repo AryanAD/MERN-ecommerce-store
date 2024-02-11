@@ -6,6 +6,7 @@ const router = express.Router();
 import {
   fetchProducts,
   fetchProductById,
+  fetchAllProducts,
   addProduct,
   updateProductDetails,
   deleteProduct,
@@ -18,6 +19,7 @@ router
   .route("/")
   .get(fetchProducts)
   .post(authenticate, authorizeAdmin, formiddable(), addProduct);
+router.route("/all-products").get(fetchAllProducts);
 router
   .route("/:id")
   .get(fetchProductById)

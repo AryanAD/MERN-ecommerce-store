@@ -49,6 +49,19 @@ const fetchProductById = asyncHandler(async (req, res) => {
   }
 });
 
+const fetchAllProducts = asyncHandler(async (req, res) => {
+  try {
+    const products = await Product.find()
+      .populate("category")
+      .limit(12)
+      .sort({ createdAt: -1 });
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 const addProduct = asyncHandler(async (req, res) => {
   try {
     // Destructure product details from the request's fields
@@ -133,6 +146,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 export {
   fetchProducts,
   fetchProductById,
+  fetchAllProducts,
   addProduct,
   updateProductDetails,
   deleteProduct,
