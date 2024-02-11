@@ -63,4 +63,14 @@ const updateProductDetails = asyncHandler(async (req, res) => {
     res.status(400).json(error.message);
   }
 });
-export { addProduct, updateProductDetails };
+
+const deleteProduct = asyncHandler(async (req, res) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json("Internal Server Error");
+  }
+});
+export { addProduct, updateProductDetails, deleteProduct };
