@@ -3,9 +3,25 @@ import Product from "../models/productModel.js";
 
 const fetchProducts = asyncHandler(async (req, res) => {
   try {
-    const products = await Product.find({});
-    res.json(products);
+    // Set the number of products to display per page
+    const pageSize = 6;
+    // Check if there is a keyword query parameter in the request
+    const keyword = req.query.keyword
+      ? { name: { $regex: req.query.keyword, $options: "i" } }
+      : {};
+    // Count the total number of products based on the applied keyword filter
+    const count = await Product.countDocuments({ ...keyword });
+    // Fetch products from the database based on the keyword filter and limit the result to the specified pageSize
+    const products = await Product.find({ ...keyword }).limit(pageSize);
+    // Respond to the client with a JSON object containing the fetched products, current page, total pages, and a flag indicating whether there are more pages
+    res.json({
+      products,
+      page: 1, // Assuming it's the first page
+      pages: Math.ceil(count / pageSize), // Calculate the total number of pages needed
+      hasMore: false, // Assuming there are no more pages for simplicity
+    });
   } catch (error) {
+    // Handle any errors that occur during the execution of the try block
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -13,9 +29,9 @@ const fetchProducts = asyncHandler(async (req, res) => {
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
+    // Destructure product details from the request's fields
     const { name, description, brand, price, quantity, category } = req.fields;
-
-    // Validation
+    // Validation: Check if required fields are present, otherwise return an error response
     switch (true) {
       case !name:
         return res.json({ error: "Name is required" });
@@ -30,11 +46,14 @@ const addProduct = asyncHandler(async (req, res) => {
       case !category:
         return res.json({ error: "Category is required" });
     }
-
+    // Create a new Product instance with the provided details
     const product = new Product({ ...req.fields });
+    // Save the new product to the database
     await product.save();
+    // Respond with the details of the added product
     res.json(product);
   } catch (error) {
+    // Handle any errors that occur during the execution of the try block
     console.error(error);
     res.status(400).json(error.message);
   }
@@ -42,9 +61,9 @@ const addProduct = asyncHandler(async (req, res) => {
 
 const updateProductDetails = asyncHandler(async (req, res) => {
   try {
+    // Destructure product details from the request's fields
     const { name, description, brand, price, quantity, category } = req.fields;
-
-    // Validation
+    // Validation: Check if required fields are present, otherwise return an error response
     switch (true) {
       case !name:
         return res.json({ error: "Name is required" });
@@ -59,16 +78,18 @@ const updateProductDetails = asyncHandler(async (req, res) => {
       case !category:
         return res.json({ error: "Category is required" });
     }
-
+    // Find and update the product in the database based on the provided product ID (req.params.id)
     const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      { ...req.fields },
-      { new: true }
+      req.params.id, // Product ID from request parameters
+      { ...req.fields }, // Updated product details from request fields
+      { new: true } // Return the modified document instead of the original
     );
-
+    // Save the updated product to the database
     await product.save();
+    // Respond with the details of the updated product
     res.json(product);
   } catch (error) {
+    // Handle any errors that occur during the execution of the try block
     console.error(error);
     res.status(400).json(error.message);
   }
@@ -76,11 +97,15 @@ const updateProductDetails = asyncHandler(async (req, res) => {
 
 const deleteProduct = asyncHandler(async (req, res) => {
   try {
+    // Find and delete the product in the database based on the provided product ID (req.params.id)
     const product = await Product.findByIdAndDelete(req.params.id);
+    // Respond with the details of the deleted product
     res.json(product);
   } catch (error) {
+    // Handle any errors that occur during the execution of the try block
     console.error(error);
     res.status(400).json("Internal Server Error");
   }
 });
+
 export { fetchProducts, addProduct, updateProductDetails, deleteProduct };
