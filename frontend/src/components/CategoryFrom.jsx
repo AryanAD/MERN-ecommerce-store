@@ -20,14 +20,14 @@ const CategoryForm = ({
           />
 
           <div className="flex justify-between">
-            <button className="bg-[#1ED760] py-2 px-4 rounded-lg hover:bg-[#109910] hover:text-white focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50 cursor-pointer transition-colors duration-150">
+            <button className="font-semibold bg-[#109910] py-2 px-4 rounded-lg hover:bg-[#1ED760] text-white hover:text-black focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50 cursor-pointer transition-colors duration-150">
               {buttonText}
             </button>
 
             {handleDelete && (
               <button
                 onClick={handleDelete}
-                className="bg-red-500 py-2 px-4 rounded-lg hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 cursor-pointer transition-colors duration-150"
+                className=" font-semibold bg-red-600 py-2 px-4 rounded-lg hover:bg-red-500 text-white hover:text-black focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 cursor-pointer transition-colors duration-150"
               >
                 Delete
               </button>

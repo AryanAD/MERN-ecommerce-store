@@ -85,50 +85,55 @@ const CategoryList = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Category delection failed. Tray again.");
+      toast.error("Category deletion failed. Tray again.");
     }
   };
 
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row">
-      <div className="md:w-3/4 p-3">
-        <div className="h-12">Manage Categories</div>
-        <CategoryForm
-          value={name}
-          setValue={setName}
-          handleSubmit={handleCreateCategory}
-        />
-        <br />
-        <hr />
-
-        <div className="flex flex-wrap">
-          {categories?.map((category) => (
-            <div key={category._id}>
-              <button
-                className="bg-white border border-[#109910] text-[#109910] py-2 px-4 rounded-lg m-3 hover:bg-[#1ED760] hover:text-white focus:outline-none foucs:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50"
-                onClick={() => {
-                  {
-                    setModalVisible(true);
-                    setSelectedCategory(category);
-                    setUpdatingName(category.name);
-                  }
-                }}
-              >
-                {category.name}
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
+    <div className="container xl:mx-[9rem] sm:mx-[0]">
+      <h1 className="text-[24px] text-[#638653] font-bold">
+        Manage Categories
+      </h1>
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-3/4 p-3">
           <CategoryForm
-            buttonText="Update"
-            value={updatingName}
-            handleSubmit={handleUpdateCategory}
-            handleDelete={handleDeleteCategory}
-            setValue={(value) => setUpdatingName(value)}
+            value={name}
+            setValue={setName}
+            handleSubmit={handleCreateCategory}
           />
-        </Modal>
+          <br />
+          <h1>Available Categories</h1>
+          <hr />
+
+          <div className="flex flex-wrap">
+            {categories?.map((category) => (
+              <div key={category._id}>
+                <button
+                  className="font-semibold bg-white border border-[#109910] text-[#109910] py-2 px-4 rounded-lg m-3 hover:bg-[#1ED760] hover:text-black focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50"
+                  onClick={() => {
+                    {
+                      setModalVisible(true);
+                      setSelectedCategory(category);
+                      setUpdatingName(category.name);
+                    }
+                  }}
+                >
+                  {category.name}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
+            <CategoryForm
+              buttonText="Update"
+              value={updatingName}
+              handleSubmit={handleUpdateCategory}
+              handleDelete={handleDeleteCategory}
+              setValue={(value) => setUpdatingName(value)}
+            />
+          </Modal>
+        </div>
       </div>
     </div>
   );
