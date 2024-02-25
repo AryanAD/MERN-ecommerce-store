@@ -6,6 +6,9 @@ import {
 } from "../../redux/api/productApiSlice";
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
+import { CustomCSS } from "../../components/CustomCSS";
+import { CustomSnippets } from "../../components/CustomSnippets";
+import Container from "@mui/material/Container";
 
 const ProductList = () => {
   const [image, setImage] = useState("");
@@ -67,124 +70,118 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container xl:mx-[9rem] sm:mx-[0]">
-      <h1 className="text-[24px] text-[#638653] font-bold">Create Product</h1>
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-3/4 p-3">
-          {imageUrl && (
-            <div className="text-center">
-              <img
-                src={imageUrl}
-                alt="productImage"
-                className="block mx-auto max-h-[200px] rounded-md mb-5"
-              />
-            </div>
-          )}
+    <Container maxWidth="xl">
+      {CustomSnippets.Heading({ heading: "Manage Products" })}
+      {imageUrl && (
+        <div className="text-center">
+          <img
+            src={imageUrl}
+            alt="productImage"
+            className="block mx-auto max-h-[200px] rounded-md mb-5"
+          />
+        </div>
+      )}
 
-          <div className={`mb-3 ${imageUrl ? "hidden" : ""}`}>
-            <label className="border border-[#396246] px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11 ">
-              {image ? image.name : "Upload Image"}
-              <input
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={uploadFileHandler}
-                className="hidden"
-              />
-            </label>
-          </div>
+      <div className={`mb-3 ${imageUrl ? "hidden" : ""}`}>
+        <label className={CustomCSS.bigImageLabel}>
+          {image ? image.name : "Upload Image"}
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            onChange={uploadFileHandler}
+            className="hidden"
+          />
+        </label>
+      </div>
 
-          <div className="grid grid-cols-2 grid-flow-row gap-3">
-            <div>
-              <label className="font-semibold">Name</label>
-              <input
-                type="text"
-                value={name}
-                placeholder="Enter Product Name"
-                onChange={(e) => setName(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              />
-            </div>
-            <div>
-              <label className="font-semibold">Price</label>
-              <input
-                type="number"
-                value={price}
-                placeholder="Enter Product Price"
-                onChange={(e) => setPrice(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              />
-            </div>
-            <div>
-              <label className="font-semibold">Quantity</label>
-              <input
-                type="number"
-                value={quantity}
-                placeholder="Enter Product Quantity"
-                onChange={(e) => setQuantity(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              />
-            </div>
-            <div>
-              <label className="font-semibold">Brand</label>
-              <input
-                type="text"
-                value={brand}
-                placeholder="Enter Brand Name"
-                onChange={(e) => setBrand(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              />
-            </div>
+      <div className={CustomCSS.gridTwo}>
+        <div>
+          <label className={CustomCSS.inputLabel}>Name</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="Enter Product Name"
+            onChange={(e) => setName(e.target.value)}
+            className={CustomCSS.inputField}
+          />
+        </div>
+        <div>
+          <label className={CustomCSS.inputLabel}>Price</label>
+          <input
+            type="number"
+            value={price}
+            placeholder="Enter Product Price"
+            onChange={(e) => setPrice(e.target.value)}
+            className={CustomCSS.inputField}
+          />
+        </div>
+        <div>
+          <label className={CustomCSS.inputLabel}>Quantity</label>
+          <input
+            type="number"
+            value={quantity}
+            placeholder="Enter Product Quantity"
+            onChange={(e) => setQuantity(e.target.value)}
+            className={CustomCSS.inputField}
+          />
+        </div>
+        <div>
+          <label className={CustomCSS.inputLabel}>Brand</label>
+          <input
+            type="text"
+            value={brand}
+            placeholder="Enter Brand Name"
+            onChange={(e) => setBrand(e.target.value)}
+            className={CustomCSS.inputField}
+          />
+        </div>
 
-            <div className="col-span-full">
-              <label className="font-semibold">Description</label>
-              <textarea
-                type="text"
-                value={description}
-                placeholder="Enter Product Description"
-                onChange={(e) => setDescription(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              ></textarea>
-            </div>
+        <div className="col-span-full">
+          <label className={CustomCSS.inputLabel}>Description</label>
+          <textarea
+            type="text"
+            value={description}
+            placeholder="Enter Product Description"
+            onChange={(e) => setDescription(e.target.value)}
+            className={CustomCSS.inputField}
+          ></textarea>
+        </div>
 
-            <div>
-              <label className="font-semibold">Quantity In Stock</label>
-              <input
-                type="number"
-                value={stock}
-                placeholder="Enter Stock Count"
-                onChange={(e) => setStock(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              />
-            </div>
+        <div>
+          <label className={CustomCSS.inputLabel}>Quantity In Stock</label>
+          <input
+            type="number"
+            value={stock}
+            placeholder="Enter Stock Count"
+            onChange={(e) => setStock(e.target.value)}
+            className={CustomCSS.inputField}
+          />
+        </div>
 
-            <div>
-              <label className="font-semibold">Category</label>
-              <select
-                onChange={(e) => setCategory(e.target.value)}
-                className="p-4 mb-3 w-full border border-[#396246] rounded-lg"
-              >
-                <option>Select Category</option>
-                {categories?.map((category) => (
-                  <option key={category?._id} value={category?._id}>
-                    {category?.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <button
-              onClick={handleSubmit}
-              className="font-semibold bg-[#109910] py-2 px-4 rounded-lg hover:bg-[#1ED760] text-white hover:text-black focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50 cursor-pointer transition-colors duration-150"
-            >
-              Submit
-            </button>
-          </div>
+        <div>
+          <label className={CustomCSS.inputLabel}>Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className={CustomCSS.inputField}
+          >
+            <option>Select Category</option>
+            {categories?.map((category) => (
+              <option key={category?._id} value={category?._id}>
+                {category?.name}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
-    </div>
+
+      <div className={CustomCSS.buttonContainer}>
+        <button onClick={handleSubmit} className={CustomCSS.buttonSubmit}>
+          Submit
+        </button>
+      </div>
+    </Container>
   );
 };
 
