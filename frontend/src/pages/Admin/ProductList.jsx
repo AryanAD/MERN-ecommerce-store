@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import { CustomCSS } from "../../components/CustomCSS";
 import { CustomSnippets } from "../../components/CustomSnippets";
 import Container from "@mui/material/Container";
+import AdminMenu from "./AdminMenu";
+import { Toolbar } from "@mui/material";
 
 const ProductList = () => {
   const [image, setImage] = useState("");
@@ -71,6 +73,8 @@ const ProductList = () => {
 
   return (
     <Container maxWidth="xl">
+      <Toolbar />
+      <AdminMenu />
       {CustomSnippets.Heading({ heading: "Manage Products" })}
       {imageUrl && (
         <div className="text-center">
