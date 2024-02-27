@@ -81,7 +81,7 @@ const ProductList = () => {
           <img
             src={imageUrl}
             alt="productImage"
-            className="block mx-auto max-h-[200px] rounded-md mb-5"
+            className="block mx-auto max-h-[200px] max-w-[200px] rounded-md mb-5"
           />
         </div>
       )}
