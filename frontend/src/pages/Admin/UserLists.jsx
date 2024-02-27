@@ -8,6 +8,9 @@ import {
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import { toast } from "react-toastify";
+import { Container, Toolbar } from "@mui/material";
+import AdminMenu from "./AdminMenu";
+import { CustomSnippets } from "../../components/CustomSnippets";
 
 const UserLists = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
@@ -56,8 +59,10 @@ const UserLists = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-semibold mb-4">Users</h1>
+    <Container maxWidth="xl">
+      {CustomSnippets.Heading({ heading: "Manage Users" })}
+      <AdminMenu />
+      <Toolbar />
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -65,8 +70,7 @@ const UserLists = () => {
           {error?.data.message || error.message}
         </Message>
       ) : (
-        <div className="flex flex-col md:flex-row">
-          {/* Admin Menu */}{" "}
+        <>
           <table className="w-full md:w-4/5 mx-auto">
             <thead>
               <tr>
@@ -161,9 +165,9 @@ const UserLists = () => {
               ))}
             </tbody>
           </table>
-        </div>
+        </>
       )}
-    </div>
+    </Container>
   );
 };
 

@@ -73,9 +73,9 @@ const ProductList = () => {
 
   return (
     <Container maxWidth="xl">
-      <Toolbar />
-      <AdminMenu />
       {CustomSnippets.Heading({ heading: "Manage Products" })}
+      <AdminMenu />
+      <Toolbar />
       {imageUrl && (
         <div className="text-center">
           <img

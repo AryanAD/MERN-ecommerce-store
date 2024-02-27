@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { CustomCSS } from "./CustomCSS";
 
 const CategoryForm = ({
   value,
@@ -11,13 +12,15 @@ const CategoryForm = ({
     <>
       <div className="p-3">
         <form onSubmit={handleSubmit} className="space-y-3">
-          <input
-            type="text"
-            value={value}
-            placeholder="Category Name"
-            onChange={(e) => setValue(e.target.value)}
-            className="py-3 px-4 border rounded-lg w-full"
-          />
+          <div className={CustomCSS.gridTwo}>
+            <input
+              type="text"
+              value={value}
+              placeholder="Category Name"
+              onChange={(e) => setValue(e.target.value)}
+              className="py-3 px-4 border rounded-lg w-full"
+            />
+          </div>
 
           <div className="flex justify-between">
             <button className="font-semibold bg-[#109910] py-2 px-4 rounded-lg hover:bg-[#1ED760] text-white hover:text-black focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50 cursor-pointer transition-colors duration-150">

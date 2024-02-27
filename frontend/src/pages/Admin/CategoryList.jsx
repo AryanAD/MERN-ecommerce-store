@@ -9,6 +9,9 @@ import {
 import { toast } from "react-toastify";
 import CategoryForm from "../../components/CategoryFrom";
 import Modal from "../../components/Modal";
+import AdminMenu from "./AdminMenu";
+import { Container, Toolbar } from "@mui/material";
+import { CustomSnippets } from "../../components/CustomSnippets";
 
 const CategoryList = () => {
   const { data: categories } = useFetchCategoriesQuery();
@@ -90,52 +93,50 @@ const CategoryList = () => {
   };
 
   return (
-    <div className="container xl:mx-[9rem] sm:mx-[0]">
-      <h1 className="text-[24px] text-[#638653] font-bold">
-        Manage Categories
-      </h1>
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-3/4 p-3">
-          <CategoryForm
-            value={name}
-            setValue={setName}
-            handleSubmit={handleCreateCategory}
-          />
-          <br />
-          <h1>Available Categories</h1>
-          <hr />
+    <Container maxWidth="xl">
+      {CustomSnippets.Heading({ heading: "Manage Categories" })}
+      <AdminMenu />
+      <Toolbar />
+      <div className="md:w-3/4 p-3">
+        <CategoryForm
+          value={name}
+          setValue={setName}
+          handleSubmit={handleCreateCategory}
+        />
+        <br />
+        <h1>Available Categories</h1>
+        <hr />
 
-          <div className="flex flex-wrap">
-            {categories?.map((category) => (
-              <div key={category._id}>
-                <button
-                  className="font-semibold bg-white border border-[#109910] text-[#109910] py-2 px-4 rounded-lg m-3 hover:bg-[#1ED760] hover:text-black focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50"
-                  onClick={() => {
-                    {
-                      setModalVisible(true);
-                      setSelectedCategory(category);
-                      setUpdatingName(category.name);
-                    }
-                  }}
-                >
-                  {category.name}
-                </button>
-              </div>
-            ))}
-          </div>
-
-          <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
-            <CategoryForm
-              buttonText="Update"
-              value={updatingName}
-              handleSubmit={handleUpdateCategory}
-              handleDelete={handleDeleteCategory}
-              setValue={(value) => setUpdatingName(value)}
-            />
-          </Modal>
+        <div className="flex flex-wrap">
+          {categories?.map((category) => (
+            <div key={category._id}>
+              <button
+                className="font-semibold bg-white border border-[#109910] text-[#109910] py-2 px-4 rounded-lg m-3 hover:bg-[#1ED760] hover:text-black focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50"
+                onClick={() => {
+                  {
+                    setModalVisible(true);
+                    setSelectedCategory(category);
+                    setUpdatingName(category.name);
+                  }
+                }}
+              >
+                {category.name}
+              </button>
+            </div>
+          ))}
         </div>
+
+        <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
+          <CategoryForm
+            buttonText="Update"
+            value={updatingName}
+            handleSubmit={handleUpdateCategory}
+            handleDelete={handleDeleteCategory}
+            setValue={(value) => setUpdatingName(value)}
+          />
+        </Modal>
       </div>
-    </div>
+    </Container>
   );
 };
 
