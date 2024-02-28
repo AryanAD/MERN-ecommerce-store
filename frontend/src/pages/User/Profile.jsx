@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import { setCredentials } from "../../redux/features/auth/authSlice";
+import { CustomCSS } from "../../components/CustomCSS";
+import { CustomSnippets } from "../../components/CustomSnippets";
+import { Container, Toolbar } from "@mui/material";
 
 const Profile = () => {
   const [username, setUsername] = useState("");
@@ -47,76 +50,69 @@ const Profile = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 mt-[10rem]">
-      <div className="flex justify-center align-center md:flex md:space-x-4">
-        <div className="md:w-1/3 bg-[azure] shadow-[0_5px_30px_5px_rgba(0,0,0,0.08)] p-5 rounded-lg ">
-          <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
+    <Container maxWidth="md">
+      <Toolbar />
+      <Toolbar />
+      {CustomSnippets.Heading({ heading: "Update Profile" })}
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block mb-2">Name</label>
-              <input
-                type="text"
-                placeholder="Enter Name"
-                className="form-input p-4 rounded-sm w-full"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
+      <form onSubmit={handleSubmit}>
+        <div className={CustomCSS.gridTwo}>
+          <div className="mb-4">
+            <label className="block mb-2">Name</label>
+            <input
+              type="text"
+              placeholder="Enter Name"
+              className={CustomCSS.inputField}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
 
-            <div className="mb-4">
-              <label className="block mb-2">Email</label>
-              <input
-                type="email"
-                placeholder="Enter Email"
-                className="form-input p-4 rounded-sm w-full"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+          <div className="mb-4">
+            <label className="block mb-2">Email</label>
+            <input
+              type="email"
+              placeholder="Enter Email"
+              className={CustomCSS.inputField}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-            <div className="mb-4">
-              <label className="block mb-2">Password</label>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                className="form-input p-4 rounded-sm w-full"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+          <div className="mb-4">
+            <label className="block mb-2">Password</label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              className={CustomCSS.inputField}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-            <div className="mb-4">
-              <label className="block mb-2">Confirm Password</label>
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className="form-input p-4 rounded-sm w-full"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-            <div className="flex justify-between">
-              <button
-                type="submit"
-                className="bg-[#1ED760] py-2 px-4 rounded-lg hover:bg-[#109910] hover:text-white focus:outline-none focus:ring-2 focus:ring-[lightgreen] focus:ring-opacity-50 cursor-pointer transition-colors duration-150"
-              >
-                Update
-              </button>
+          <div className="mb-4">
+            <label className="block mb-2">Confirm Password</label>
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className={CustomCSS.inputField}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+          <div className="flex justify-between col-span-full">
+            <button type="submit" className={CustomCSS.buttonSubmit}>
+              Update
+            </button>
 
-              <Link
-                to="/user-orders"
-                className="bg-[#1EB5F8] py-2 px-4 rounded-lg hover:bg-[#0189D5] hover:text-white focus:outline-none focus:ring-2 focus:ring-[cornflowerblue] focus:ring-opacity-50 cursor-pointer transition-colors duration-150"
-              >
-                My Orders
-              </Link>
-            </div>
-          </form>
+            <Link to="/user-orders" className={CustomCSS.buttonUpdate}>
+              My Orders
+            </Link>
+          </div>
         </div>
-
-        {loadingUpdateProfile && <Loader />}
-      </div>
-    </div>
+      </form>
+      {loadingUpdateProfile && <Loader />}
+    </Container>
   );
 };
 

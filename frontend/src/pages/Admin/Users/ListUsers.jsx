@@ -4,15 +4,15 @@ import {
   useGetUsersQuery,
   useDeleteUserMutation,
   useUpdateUserMutation,
-} from "../../redux/api/usersApiSlice";
-import Loader from "../../components/Loader";
-import Message from "../../components/Message";
+} from "../../../redux/api/usersApiSlice";
+import Loader from "../../../components/Loader";
+import Message from "../../../components/Message";
 import { toast } from "react-toastify";
 import { Container, Toolbar } from "@mui/material";
-import AdminMenu from "./AdminMenu";
-import { CustomSnippets } from "../../components/CustomSnippets";
+import AdminMenu from "../AdminMenu";
+import { CustomSnippets } from "../../../components/CustomSnippets";
 
-const UserLists = () => {
+const ListUsers = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
 
   const [deleteUser] = useDeleteUserMutation();
@@ -171,4 +171,4 @@ const UserLists = () => {
   );
 };
 
-export default UserLists;
+export default ListUsers;

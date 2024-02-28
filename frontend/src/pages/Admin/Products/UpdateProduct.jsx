@@ -4,13 +4,13 @@ import {
   useGetProductByIdQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from "../../redux/api/productApiSlice";
+} from "../../../redux/api/productApiSlice";
 import { useEffect, useState } from "react";
-import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
-import { CustomCSS } from "../../components/CustomCSS";
+import { useFetchCategoriesQuery } from "../../../redux/api/categoryApiSlice";
+import { CustomCSS } from "../../../components/CustomCSS";
 import { Container, Toolbar } from "@mui/material";
-import AdminMenu from "./AdminMenu";
-import { CustomSnippets } from "../../components/CustomSnippets";
+import AdminMenu from "../AdminMenu";
+import { CustomSnippets } from "../../../components/CustomSnippets";
 import { toast } from "react-toastify";
 
 const UpdateProduct = () => {

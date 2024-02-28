@@ -11,7 +11,7 @@ export const CustomCSS = {
     "border border-[#396246] px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11 ",
 
   // GRIDS
-  gridTwo: "grid grid-cols-2 grid-flow-row gap-3",
+  gridTwo: "grid md:grid-cols-2 grid-flow-row gap-3",
 
   //   BUTTONS
   buttonContainer: " my-5 flex justify-center gap-4",

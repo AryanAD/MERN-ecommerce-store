@@ -43,31 +43,31 @@ const AdminMenu = () => {
             </li>
             <li>
               <NavLink
-                to="/admin/user-list"
+                to="/admin/users-list"
                 style={({ isActive }) => ({
                   color: isActive ? "green" : "#396246",
                   background: isActive ? "whitesmoke" : "",
                 })}
                 className="list-item py-2 px-3 mb-5 hover:bg-[whitesmoke] rounded-sm"
               >
-                User List
+                Manage Users
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/admin/category-list"
+                to="/admin/categories-list"
                 style={({ isActive }) => ({
                   color: isActive ? "green" : "#396246",
                   background: isActive ? "whitesmoke" : "",
                 })}
                 className="list-item py-2 px-3 mb-5 hover:bg-[whitesmoke] rounded-sm"
               >
-                Category List
+                Manage Categories
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/admin/product-list"
+                to="/admin/create-product"
                 style={({ isActive }) => ({
                   color: isActive ? "green" : "#396246",
                   background: isActive ? "whitesmoke" : "",
@@ -79,19 +79,19 @@ const AdminMenu = () => {
             </li>
             <li>
               <NavLink
-                to="/admin/all-products"
+                to="/admin/products-list"
                 style={({ isActive }) => ({
                   color: isActive ? "green" : "#396246",
                   background: isActive ? "whitesmoke" : "",
                 })}
                 className="list-item py-2 px-3 mb-5 hover:bg-[whitesmoke] rounded-sm"
               >
-                All Products
+                Manage Products
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/admin/order-list"
+                to="/admin/orders-list"
                 style={({ isActive }) => ({
                   color: isActive ? "green" : "#396246",
                   background: isActive ? "whitesmoke" : "",

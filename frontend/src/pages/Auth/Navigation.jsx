@@ -133,7 +133,7 @@ const Navigation = () => {
 
                 <li>
                   <Link
-                    to="/admin/product-list"
+                    to="/admin/products-list"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
                     Products
@@ -142,16 +142,16 @@ const Navigation = () => {
 
                 <li>
                   <Link
-                    to="/admin/category-list"
+                    to="/admin/categories-list"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
-                    Category
+                    Categories
                   </Link>
                 </li>
 
                 <li>
                   <Link
-                    to="/admin/order-list"
+                    to="/admin/orders-list"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
                     Orders
@@ -160,7 +160,7 @@ const Navigation = () => {
 
                 <li>
                   <Link
-                    to="/admin/user-list"
+                    to="/admin/users-list"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
                     Users

@@ -4,16 +4,16 @@ import {
   useUpdateCategoryMutation,
   useDeleteCategoryMutation,
   useFetchCategoriesQuery,
-} from "../../redux/api/categoryApiSlice";
+} from "../../../redux/api/categoryApiSlice";
 
 import { toast } from "react-toastify";
-import CategoryForm from "../../components/CategoryFrom";
-import Modal from "../../components/Modal";
-import AdminMenu from "./AdminMenu";
+import CategoryForm from "../../../components/CategoryFrom";
+import Modal from "../../../components/Modal";
+import AdminMenu from "../AdminMenu";
 import { Container, Toolbar } from "@mui/material";
-import { CustomSnippets } from "../../components/CustomSnippets";
+import { CustomSnippets } from "../../../components/CustomSnippets";
 
-const CategoryList = () => {
+const CreateAndListCategories = () => {
   const { data: categories } = useFetchCategoriesQuery();
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -140,4 +140,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default CreateAndListCategories;

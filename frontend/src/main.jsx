@@ -17,11 +17,11 @@ import Profile from "./pages/User/Profile.jsx";
 
 // Admin
 import AdminRoute from "./pages/Admin/AdminRoute.jsx";
-import UserLists from "./pages/Admin/UserLists.jsx";
-import CategoryList from "./pages/Admin/CategoryList.jsx";
-import ProductList from "./pages/Admin/ProductList.jsx";
-import UpdateProduct from "./pages/Admin/UpdateProduct.jsx";
-import AllProducts from "./pages/Admin/AllProducts.jsx";
+import CreateAndListCategories from "./pages/Admin/Categories/CreateAndListCategories.jsx";
+import ListUsers from "./pages/Admin/Users/ListUsers.jsx";
+import CreateProduct from "./pages/Admin/Products/CreateProduct.jsx";
+import ListProducts from "./pages/Admin/Products/ListProducts.jsx";
+import UpdateProduct from "./pages/Admin/Products/UpdateProduct.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,11 +34,11 @@ const router = createBrowserRouter(
 
       {/* Admin Routes */}
       <Route path="/admin" element={<AdminRoute />}>
-        <Route path="user-list" element={<UserLists />} />
-        <Route path="category-list" element={<CategoryList />} />
-        <Route path="product-list" element={<ProductList />} />
-        <Route path="all-products" element={<AllProducts />} />
+        <Route path="users-list" element={<ListUsers />} />
+        <Route path="categories-list" element={<CreateAndListCategories />} />
+        <Route path="create-product" element={<CreateProduct />} />
         <Route path="product-update/:_id" element={<UpdateProduct />} />
+        <Route path="products-list" element={<ListProducts />} />
       </Route>
     </Route>
   )

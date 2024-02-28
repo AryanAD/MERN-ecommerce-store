@@ -3,16 +3,16 @@ import { useNavigate } from "react-router";
 import {
   useCreateProductMutation,
   useUploadProductImageMutation,
-} from "../../redux/api/productApiSlice";
-import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
+} from "../../../redux/api/productApiSlice";
+import { useFetchCategoriesQuery } from "../../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
-import { CustomCSS } from "../../components/CustomCSS";
-import { CustomSnippets } from "../../components/CustomSnippets";
+import { CustomCSS } from "../../../components/CustomCSS";
+import { CustomSnippets } from "../../../components/CustomSnippets";
 import Container from "@mui/material/Container";
-import AdminMenu from "./AdminMenu";
+import AdminMenu from "../AdminMenu";
 import { Toolbar } from "@mui/material";
 
-const ProductList = () => {
+const CreateProduct = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -189,4 +189,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default CreateProduct;

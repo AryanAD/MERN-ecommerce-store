@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { useAllProductsQuery } from "../../redux/api/productApiSlice";
-import AdminMenu from "./AdminMenu";
+import { useAllProductsQuery } from "../../../redux/api/productApiSlice";
+import AdminMenu from "../AdminMenu";
 import { Container, Toolbar } from "@mui/material";
-import { CustomSnippets } from "../../components/CustomSnippets";
-import { CustomCSS } from "../../components/CustomCSS";
-import Loader from "../../components/Loader";
+import { CustomSnippets } from "../../../components/CustomSnippets";
+import { CustomCSS } from "../../../components/CustomCSS";
+import Loader from "../../../components/Loader";
 
-const AllProducts = () => {
+const ListProducts = () => {
   const { data: products, isLoading, isError } = useAllProductsQuery();
 
   if (isLoading) {
@@ -21,7 +21,7 @@ const AllProducts = () => {
   return (
     <Container maxWidth="lg">
       {CustomSnippets.Heading({
-        heading: `Product List | (${products?.length}) Products`,
+        heading: `Product List (${products?.length})`,
       })}
       <AdminMenu />
       <Toolbar />
@@ -37,7 +37,7 @@ const AllProducts = () => {
               <img
                 src={product?.image}
                 alt={product?.name}
-                className="w-[10rem] object-cover"
+                className="w-[13rem] object-cover"
               />
               <div className="p-4 flex flex-col justify-around">
                 <div className="flex justify-between">
@@ -87,4 +87,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default ListProducts;
