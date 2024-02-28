@@ -11,7 +11,7 @@ import CategoryForm from "../../../components/CategoryFrom";
 import Modal from "../../../components/Modal";
 import AdminMenu from "../AdminMenu";
 import { Container, Toolbar } from "@mui/material";
-import { CustomSnippets } from "../../../components/CustomSnippets";
+import { CustomSnippets } from "../../../components/Custom/CustomSnippets";
 
 const CreateAndListCategories = () => {
   const { data: categories } = useFetchCategoriesQuery();

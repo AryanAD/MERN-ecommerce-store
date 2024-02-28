@@ -3,8 +3,8 @@ import moment from "moment";
 import { useAllProductsQuery } from "../../../redux/api/productApiSlice";
 import AdminMenu from "../AdminMenu";
 import { Container, Toolbar } from "@mui/material";
-import { CustomSnippets } from "../../../components/CustomSnippets";
-import { CustomCSS } from "../../../components/CustomCSS";
+import { CustomSnippets } from "../../../components/Custom/CustomSnippets";
+import { CustomCSS } from "../../../components/Custom/CustomCSS";
 import Loader from "../../../components/Loader";
 
 const ListProducts = () => {

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { CustomCSS } from "./CustomCSS";
+import { CustomCSS } from "./Custom/CustomCSS";
 
 const CategoryForm = ({
   value,

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { toast } from "react-toastify";
 import { setCredentials } from "../../redux/features/auth/authSlice";
-import { CustomCSS } from "../../components/CustomCSS";
-import { CustomSnippets } from "../../components/CustomSnippets";
+import { CustomCSS } from "../../components/Custom/CustomCSS";
+import { CustomSnippets } from "../../components/Custom/CustomSnippets";
 import { Container, Toolbar } from "@mui/material";
 
 const Profile = () => {
