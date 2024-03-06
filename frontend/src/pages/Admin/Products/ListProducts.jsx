@@ -19,25 +19,21 @@ const ListProducts = () => {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       {CustomSnippets.Heading({
         heading: `Product List (${products?.length})`,
       })}
       <AdminMenu />
       <Toolbar />
 
-      <div className="flex flex-wrap justify-around items-center">
+      <div className={CustomCSS.gridTwo}>
         {products.map((product) => (
-          <Link
-            key={product?._id}
-            to={`/admin/product-update/${product?._id}`}
-            className="block mb-4 overflow-hidden"
-          >
+          <Link key={product?._id} to={`/admin/product-update/${product?._id}`}>
             <div className="flex border rounded-lg drop-shadow-lg">
               <img
                 src={product?.image}
                 alt={product?.name}
-                className="w-[13rem] object-cover"
+                className="w-[13rem] h-[12rem] object-cover object-center"
               />
               <div className="p-4 flex flex-col justify-around">
                 <div className="flex justify-between">
@@ -51,7 +47,7 @@ const ListProducts = () => {
                 </div>
 
                 <p className="text-gray-400 xl:w-[30rem] lg:w-[30rem] md:w-[20rem] sm:w-[10rem] text-sm mb-4">
-                  {product?.description?.substring(0, 160)}...
+                  {product?.description?.substring(0, 200)}...
                 </p>
 
                 <div className="flex justify-between">
