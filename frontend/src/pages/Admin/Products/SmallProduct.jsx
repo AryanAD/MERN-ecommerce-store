@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CustomCSS } from "../../../components/Custom/CustomCSS";
+import HeartIcon from "./favorites/HeartIcon";
 
 const SmallProduct = ({ product }) => {
   return (
@@ -10,7 +11,7 @@ const SmallProduct = ({ product }) => {
           alt={product?.name}
           className="h-auto rounded-lg"
         />
-        {/* <HeartIcon product={product} /> */}
+        <HeartIcon product={product} />
 
         <div className="p-54">
           <Link to={`/product/${product?._id}`}>

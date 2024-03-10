@@ -12,6 +12,7 @@ import "./Navigation.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
+import FavoritesCount from "../Admin/Products/favorites/FavoritesCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -80,6 +81,7 @@ const Navigation = () => {
         >
           <FaHeart className="mr-2 mt-[3rem]" size={26} />
           <span className="hidden nav-item-name mt-[3rem]">FAVORITE</span>{" "}
+          <FavoritesCount />
         </Link>
       </div>
 
