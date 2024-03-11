@@ -58,30 +58,40 @@ const Navigation = () => {
           to="/"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">HOME</span>{" "}
+          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+            <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">HOME</span>{" "}
+          </div>
         </Link>
         <Link
           to="/shop"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+            <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          </div>
         </Link>
         <Link
           to="/cart"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+            <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+          </div>
         </Link>
         <Link
           to="/favorite"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <FaHeart className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">FAVORITE</span>{" "}
-          <FavoritesCount />
+          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+            <FaHeart className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">
+              FAVORITE
+            </span>{" "}
+            <FavoritesCount />
+          </div>
         </Link>
       </div>
 
