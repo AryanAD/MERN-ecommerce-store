@@ -3,7 +3,6 @@ import { useGetProductsQuery } from "./redux/api/productApiSlice";
 import Loader from "./components/Loader";
 import Header from "./components/Header";
 import Message from "./components/Message";
-import { CustomCSS } from "./components/Custom/CustomCSS";
 import Product from "./pages/Admin/Products/Product";
 
 const Home = () => {

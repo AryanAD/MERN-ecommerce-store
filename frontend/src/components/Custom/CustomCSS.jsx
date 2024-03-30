@@ -16,7 +16,7 @@ export const CustomCSS = {
   //   BUTTONS
   buttonContainer: " my-5 flex justify-center gap-4",
   buttonSubmit:
-    "inline-flex items-center px-6 py-2 uppercase font-semibold text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:outline-none focus:ring-green-300 bg-green-500 hover:bg-green-700",
+    "inline-flex gap-2 items-center px-6 py-2 uppercase font-semibold text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:outline-none focus:ring-green-300 bg-green-500 hover:bg-green-700",
   buttonUpdate:
     "inline-flex items-center px-6 py-2 uppercase font-semibold text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 bg-blue-500 hover:bg-blue-700",
   buttonDelete:

@@ -14,7 +14,7 @@ const Product = ({ product }) => {
       </div>
 
       <div className="p-4">
-        <Link to={`/products/${product}`}>
+        <Link to={`/product/${product?._id}`}>
           <h2 className="flex justify-between items-center">
             <div className="text-lg">{product?.name}</div>
             <span className="bg-green-100 text-green-900 text-md font-medium mr-2 px-3 py-0.5 rounded-full">

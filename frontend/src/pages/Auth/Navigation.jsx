@@ -82,7 +82,7 @@ const Navigation = () => {
           </div>
         </Link>
         <Link
-          to="/favorite"
+          to="/favorite-product"
           className="flex items-center transition-transform hover:translate-x-2"
         >
           <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
