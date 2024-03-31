@@ -65,6 +65,21 @@ const SingleProduct = () => {
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await createReview({
+        productId,
+        rating,
+        comment,
+      }).unwrap();
+      refetch();
+      toast.success("Review Successfully Submitted");
+    } catch (error) {
+      toast.error(error?.data?.message || error.message);
+    }
+  };
   return (
     <Container maxWidth="xl">
       <Toolbar />
@@ -165,7 +180,7 @@ const SingleProduct = () => {
               <div className="flex mt-3">
                 <button
                   // onClick={handleAddToCard}
-                  disable={product?.countInStock === 0}
+                  disabled={product?.countInStock === 0}
                   className={CustomCSS.buttonSubmit}
                 >
                   <FaCartPlus />
@@ -181,7 +196,7 @@ const SingleProduct = () => {
                 userInfo={userInfo}
                 setRating={setRating}
                 setComment={setComment}
-                // handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit}
                 loadingProductReview={loadingProductReview}
               />
             </div>
