@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
   useGetProductDetailsQuery,
@@ -30,6 +30,7 @@ import { CustomSnippets } from "../../../components/Custom/CustomSnippets";
 import { CustomCSS } from "../../../components/Custom/CustomCSS";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
+import { addToCart } from "../../../redux/features/cart/cartSlice";
 
 const LightTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -48,6 +49,7 @@ const LightTooltip = styled(({ className, ...props }) => (
 const SingleProduct = () => {
   const { id: productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [quantity, setQuantity] = React.useState(1);
   const [rating, setRating] = React.useState(0);
@@ -64,6 +66,11 @@ const SingleProduct = () => {
 
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
+
+  const handleAddToCart = async () => {
+    dispatch(addToCart({ ...product, quantity }));
+    navigate("/cart");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -179,7 +186,7 @@ const SingleProduct = () => {
 
               <div className="flex mt-3">
                 <button
-                  // onClick={handleAddToCard}
+                  onClick={handleAddToCart}
                   disabled={product?.countInStock === 0}
                   className={CustomCSS.buttonSubmit}
                 >
