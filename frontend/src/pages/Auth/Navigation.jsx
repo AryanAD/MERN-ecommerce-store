@@ -86,7 +86,7 @@ const Navigation = () => {
           <div className="absolute top-[24%] left-[45%]">
             {cartItems.length > 0 && (
               <span className="px-1 py-0 rounded-full bg-red-500 text-white text-sm">
-                {cartItems.length}
+                {cartItems.reduce((a, c) => a + parseInt(c.quantity), 0)}
               </span>
             )}
           </div>
