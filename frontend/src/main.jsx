@@ -26,6 +26,7 @@ import SingleFavorite from "./pages/Admin/Products/favorites/SingleFavorite.jsx"
 import SingleProduct from "./pages/Admin/Products/SingleProduct.jsx";
 import Home from "./pages/Home.jsx";
 import Cart from "./pages/Cart.jsx";
+import Shop from "./pages/Shop.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="/favorite-product" element={<SingleFavorite />} />
       <Route path="/product/:id" element={<SingleProduct />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/shop" element={<Shop />} />
 
       <Route path="" element={<PrivateRoutes />}>
         <Route path="/profile" element={<Profile />} />
