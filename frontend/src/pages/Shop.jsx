@@ -13,6 +13,7 @@ import Loader from "../components/Loader";
 import { CustomCSS } from "../components/Custom/CustomCSS";
 import { CustomSnippets } from "../components/Custom/CustomSnippets";
 import { Container, Toolbar } from "@mui/material";
+import ProductCard from "./Admin/Products/ProductCard";
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -91,7 +92,7 @@ const Shop = () => {
             Filter by Categories
           </h2>
 
-          <div className="p-5 w-[20rem]">
+          <div className="p-5 w-[15rem]">
             {categories?.map((category) => (
               <div key={category?._id} className="mb-2">
                 <div className="flex items-center me-4">
@@ -119,7 +120,7 @@ const Shop = () => {
             Filter by Brands
           </h2>
 
-          <div className="p-5 w-[20rem]">
+          <div className="p-5 w-[15rem]">
             {uniqueBrands.map((brand) => (
               <>
                 <div className="flex items-center mr-4 mb-5">
@@ -139,6 +140,43 @@ const Shop = () => {
                 </div>
               </>
             ))}
+          </div>
+
+          <h2 className="h4 text-center py-2 bg-green-300 rounded-full mb-2">
+            Filter by Price
+          </h2>
+
+          <div className="p-5 w-[15rem]">
+            <input
+              type="text"
+              value={priceFilter}
+              placeholder="Enter Price"
+              onChange={handlePriceChange}
+              className="w-full rounded-lg border-2 border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-transparent placeholder:text-gray-400"
+            />
+          </div>
+
+          <div className="p-5 pt-0">
+            <button
+              className={CustomCSS.buttonReset}
+              onClick={() => window.location.reload()}
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+        <div className="p-3">
+          <h2 className="h4 text-center mb-2">{products?.length} Products</h2>
+          <div className="flex flex-wrap">
+            {products?.length === 0 ? (
+              <Loader />
+            ) : (
+              products?.map((product) => (
+                <div key={product?._id} className="p-3">
+                  <ProductCard product={product} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

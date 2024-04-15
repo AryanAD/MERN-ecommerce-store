@@ -21,4 +21,6 @@ export const CustomCSS = {
     "inline-flex items-center px-6 py-2 uppercase font-semibold text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:outline-none focus:ring-blue-300 bg-blue-500 hover:bg-blue-700",
   buttonDelete:
     "inline-flex items-center px-6 py-2 uppercase font-semibold text-sm font-medium text-center text-white rounded-md focus:ring-4 focus:outline-none focus:ring-red-300 bg-red-500 hover:bg-red-700",
+  buttonReset:
+    "w-full border py-2 bg-green-400 rounded-lg text-white hover:transition hover:delay-80 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-transparent hover:bg-green-500",
 };
