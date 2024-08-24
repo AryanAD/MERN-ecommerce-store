@@ -97,7 +97,7 @@ const CreateAndListCategories = () => {
       {CustomSnippets.Heading({ heading: "Manage Categories" })}
       <AdminMenu />
       <Toolbar />
-      <div className="md:w-3/4 p-3">
+      <div className="p-3 md:w-3/4">
         <CategoryForm
           value={name}
           setValue={setName}

@@ -1,4 +1,3 @@
-import React from "react";
 import { addToCart, removeFromCart } from "../redux/features/cart/cartSlice";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,12 +22,12 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    // navigate("/login?redirect=/shipping");
+    navigate("/login?redirect=/shipping");
   };
 
   return (
     <>
-      <div className="container flex justify-around items-start flex-wrap mx-auto mt-8">
+      <div className="container flex flex-wrap items-start justify-around mx-auto mt-8">
         {cartItems.length === 0 ? (
           <div>
             Your cart is empty <Link to={"/shop"}>Go To Shop</Link>
@@ -36,7 +35,7 @@ const Cart = () => {
         ) : (
           <>
             <div className="flex flex-col w-[80%]">
-              <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
+              <h1 className="mb-4 text-2xl font-semibold">Shopping Cart</h1>
 
               {cartItems.map((item) => (
                 <div
@@ -47,7 +46,7 @@ const Cart = () => {
                     <img
                       src={item?.image}
                       alt={item?.name}
-                      className="w-full h-full object-cover rounded-md"
+                      className="object-cover w-full h-full rounded-md"
                     />
                   </div>
 
@@ -86,13 +85,13 @@ const Cart = () => {
 
               <div className="mt-8 w-[40rem]">
                 <div className="p-4 rounded-lg">
-                  <h2 className="text-xl font-semibold mb-2">
+                  <h2 className="mb-2 text-xl font-semibold">
                     Items (
                     {cartItems?.reduce((acc, item) => acc + item.quantity, 0)}
                     {""}items)
                   </h2>
 
-                  <div className="text-2xl font-bold mb-3">
+                  <div className="mb-3 text-2xl font-bold">
                     $
                     {cartItems
                       ?.reduce(

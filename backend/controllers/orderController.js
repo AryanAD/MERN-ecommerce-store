@@ -15,7 +15,7 @@ function calcPrices(orderItems) {
   const totalPrice = (
     itemsPrice +
     shippingPrice +
-    ParseFloat(taxPrice)
+    parseFloat(taxPrice)
   ).toFixed(2);
 
   return {
@@ -30,13 +30,13 @@ const createOrder = async (req, res) => {
   try {
     const { orderItems, shippingAddress, paymentMethod } = req.body;
 
-    if (orderItems && orderItems.length == 0) {
+    if (orderItems && orderItems.length === 0) {
       res.status(400);
-      throw new Error("Please add at least one product to your order");
+      throw new Error("No order items");
     }
 
     const itemsFromDB = await Product.find({
-      _id: { $in: orderItems.map((order) => order.productId) },
+      _id: { $in: orderItems.map((x) => x._id) },
     });
 
     const dbOrderItems = orderItems.map((itemFromClient) => {
