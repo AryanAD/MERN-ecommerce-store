@@ -60,7 +60,7 @@ const Navigation = () => {
           to="/"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+          <div className="flex items-center justify-center transition-transform transform hover:translate-x-2">
             <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
             <span className="hidden nav-item-name mt-[3rem]">HOME</span>{" "}
           </div>
@@ -69,7 +69,7 @@ const Navigation = () => {
           to="/shop"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+          <div className="flex items-center justify-center transition-transform transform hover:translate-x-2">
             <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
             <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
           </div>
@@ -78,14 +78,14 @@ const Navigation = () => {
           to="/cart"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+          <div className="flex items-center justify-center transition-transform transform hover:translate-x-2">
             <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
             <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
           </div>
 
           <div className="absolute top-[24%] left-[45%]">
             {cartItems.length > 0 && (
-              <span className="px-1 py-0 rounded-full bg-red-500 text-white text-sm">
+              <span className="px-1 py-0 text-sm text-white bg-red-500 rounded-full">
                 {cartItems.reduce((a, c) => a + parseInt(c.quantity, 10), 0)}
               </span>
             )}
@@ -95,7 +95,7 @@ const Navigation = () => {
           to="/favorite-product"
           className="flex items-center transition-transform hover:translate-x-2"
         >
-          <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
+          <div className="flex items-center justify-center transition-transform transform hover:translate-x-2">
             <FaHeart className="mr-2 mt-[3rem]" size={26} />
             <span className="hidden nav-item-name mt-[3rem]">
               FAVORITE
@@ -108,14 +108,8 @@ const Navigation = () => {
       <div className="relative">
         <button
           onClick={toggleDropdown}
-          className="flex items-center text-gray-8000 focus:outline-none"
+          className="flex items-center text-gray-80 focus:outline-none"
         >
-          {userInfo ? (
-            <span className="text-white">{userInfo.username}</span>
-          ) : (
-            <></>
-          )}
-
           {userInfo && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +118,7 @@ const Navigation = () => {
               }`}
               fill="none"
               viewBox="0 0 24 24"
-              stroke="black"
+              stroke="white"
             >
               <path
                 strokeLinecap="round"

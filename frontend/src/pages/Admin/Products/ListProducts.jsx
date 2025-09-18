@@ -29,19 +29,19 @@ const ListProducts = () => {
       <div className={CustomCSS.gridTwo}>
         {products.map((product) => (
           <Link key={product?._id} to={`/admin/product-update/${product?._id}`}>
-            <div className="flex border rounded-lg drop-shadow-lg">
+            <div className="flex w-full pr-3 border rounded-lg drop-shadow-lg">
               <img
                 src={product?.image}
                 alt={product?.name}
-                className="w-[13rem] h-[12rem] object-cover object-center"
+                className="w-[11rem] h-[11rem] object-cover object-center"
               />
-              <div className="p-4 flex flex-col justify-around">
+              <div className="flex flex-col justify-around p-4">
                 <div className="flex justify-between">
-                  <h5 className="text-xl font-semibold mb-2">
-                    {product?.name}
+                  <h5 className="mb-2 text-xl font-semibold">
+                    {product?.name?.substring(0, 35)}...
                   </h5>
 
-                  <p className="text-gray-400 text-xs">
+                  <p className="text-xs text-gray-400">
                     {moment(product?.createdAt).format("D-MMMM, YYYY")}
                   </p>
                 </div>
