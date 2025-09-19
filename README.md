@@ -105,14 +105,14 @@ A fully functional, production-ready e-commerce platform with role-based authent
 
 ## Demo Pages
 
-- Homepage - Featured products carousel and categories
-- Product Listing - Filterable grid of all products
-- Product Detail - Comprehensive product information and reviews
-- Shopping Cart - Cart management and checkout preparation
-- Checkout Process - Multi-step checkout with PayPal integration
-- Admin Dashboard - Analytics, order management, and product controls
-- User Profile - Order history and account management
-- Wishlist - Saved favorite products
+`Admin Dashboard` ![Admin Dashboard](/screenshots/admin-dashboard.png)
+`Edit Product` ![Edit Product](/screenshots/edit-product.png)
+`Favorite Products` ![Favorite Products](/screenshots/favorite-products.png)
+`Manage Users` ![Manage Users](/screenshots/manage-users.png)
+`Order Placement` ![Order Placement](/screenshots/order-placement.png)
+`Paypal Integration` ![Paypal Integration](/screenshots/paypal-integration.png)
+`Product Detail` ![Product Detail](/screenshots/product-detail.png)
+`Product List` ![Product List](/screenshots/product-list.png)
 
 ## Usage
 
